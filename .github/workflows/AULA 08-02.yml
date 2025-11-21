@@ -1,0 +1,36 @@
+# Este é um fluxo de trabalho básico para ajudar você a começar com GitHub Actions
+
+name: AULA 08 Test SQL
+
+# Controla quando o workflow será executado
+on:
+  # Aciona o workflow em push ou pull request na branch "principal"
+  push:
+    branches: [ "principal" ]
+  pull_request:
+    branches: [ "principal" ]
+
+  # Permite executar manualmente pelo GitHub
+  workflow_dispatch:
+
+# Uma execução de workflow é composta por um ou mais jobs
+jobs:
+  build:
+    # Tipo de máquina que o job vai rodar
+    runs-on: ubuntu-latest
+
+    # Passos do job
+    steps:
+      # Faz checkout do código
+      - name: Checkout do repositório
+        uses: actions/checkout@v3
+
+      # Executa comando simples
+      - name: Executar script de uma linha
+        run: echo "Olá, mundo!"
+
+      # Executa vários comandos
+      - name: Executar script multi-linha
+        run: |
+          echo "Adicionar outras ações para construir,"
+          echo "testar e implantar seu projeto."
